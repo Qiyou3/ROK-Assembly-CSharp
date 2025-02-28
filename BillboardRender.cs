@@ -1,0 +1,34 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: BillboardRender
+// Assembly: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+// MVID: 7AE521BE-DDCA-4BB1-9869-8132CF2A08FD
+// Assembly location: C:\Users\85206\Desktop\Oxide.ReignOfKings-develop\src\Dependencies\windows\ROK_Data\Managed\Assembly-CSharp.dll
+
+using CodeHatch.Common;
+using UnityEngine;
+
+#nullable disable
+[ExecuteInEditMode]
+public class BillboardRender : MonoBehaviour
+{
+  public BillboardRender.Method method;
+
+  public void OnWillRenderObject()
+  {
+    switch (this.method)
+    {
+      case BillboardRender.Method.Directional:
+        this.transform.SetForward(-Camera.current.transform.forward);
+        break;
+      case BillboardRender.Method.Point:
+        this.transform.LookAt(Camera.current.transform.position);
+        break;
+    }
+  }
+
+  public enum Method
+  {
+    Directional,
+    Point,
+  }
+}
